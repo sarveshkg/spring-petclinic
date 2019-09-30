@@ -17,14 +17,30 @@
 package org.springframework.samples.petclinic.system;
 
 
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.petclinic.stsdemo.WelcomeMessageProvider;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 class WelcomeController {
 
-    @GetMapping("/")
-    public String welcome() {
+    private WelcomeMessageProvider welcomeMessageProvider = () -> "Welcome message not configured";
+
+    public WelcomeMessageProvider getWelcomeMessageProvider() {
+		return welcomeMessageProvider;
+	}
+
+    @Autowired(required = false)
+	public void setWelcomeMessageProvider(WelcomeMessageProvider welcomeMessageProvider) {
+		this.welcomeMessageProvider = welcomeMessageProvider;
+	}
+
+	@GetMapping("/")
+    public String welcome(Map<String, Object> model) {
+       	model.put("greeting", welcomeMessageProvider.get());
         return "welcome";
     }
 }
