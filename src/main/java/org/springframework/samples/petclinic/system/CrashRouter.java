@@ -14,7 +14,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 public class CrashRouter {
 
 	@Bean
-	public RouterFunction<ServerResponse> route(VetsHandler vetsHandler) {
+	public RouterFunction<ServerResponse> crash(VetsHandler vetsHandler) {
 
 		return RouterFunctions
 			.route(RequestPredicates.GET("/oups"), vetsHandler::vets)
