@@ -1,5 +1,17 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
-	<bean class="org.springframework.xml.petclinic.LegacyCommandLineRunner"/>
+
+<!-- uncomment the below to define yet another welcomeMessageProvider and wire it into the 'LegacyCommandLineRunner' 
+     This example can be used to show content assist for bean ids, bean property names, java package and type names.
+
+	<bean id="simpleWelcomeMessageProvider" class="org.springframework.xml.petclinic.SimpleWelcomeMessageProvider">
+	   <constructor-arg value="Legacy is important!"/>
+	</bean>
+	
+	<bean class="org.springframework.xml.petclinic.LegacyCommandLineRunner">
+		<property name="welcomeMessageProvider" ref="simpleWelcomeMessageProvider"/>
+	</bean>
+	
+	-->
 </beans>
