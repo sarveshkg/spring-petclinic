@@ -15,11 +15,12 @@
  */
 package org.springframework.samples.petclinic.vet;
 
+import java.util.Map;
+
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.Map;
 
 /**
  * @author Juergen Hoeller
@@ -27,6 +28,7 @@ import java.util.Map;
  * @author Ken Krebs
  * @author Arjen Poutsma
  */
+@Profile("!webflux")
 @Controller
 class VetController {
 

@@ -15,6 +15,11 @@
  */
 package org.springframework.samples.petclinic.owner;
 
+import java.util.Collection;
+import java.util.Map;
+
+import javax.validation.Valid;
+
 import org.springframework.samples.petclinic.visit.VisitRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,11 +29,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
-
-import javax.validation.Valid;
-import java.util.Collection;
-import java.util.Map;
+import org.springframework.web.reactive.result.view.Rendering;
 
 /**
  * @author Juergen Hoeller
@@ -127,14 +128,8 @@ class OwnerController {
      * @return a ModelMap with the model attributes for the view
      */
     @GetMapping("/owners/{ownerId}")
-    public ModelAndView showOwner(@PathVariable("ownerId") int ownerId) {
-        ModelAndView mav = new ModelAndView("owners/ownerDetails");
-        Owner owner = this.owners.findById(ownerId);
-        for (Pet pet : owner.getPets()) {
-            pet.setVisitsInternal(visits.findByPetId(pet.getId()));
-        }
-        mav.addObject(owner);
-        return mav;
+    public Rendering showOwner(@PathVariable("ownerId") int ownerId) {
+    	return Rendering.view("owners/ownerDetails").modelAttribute(this.owners.findById(ownerId)).build();
     }
 
 }

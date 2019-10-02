@@ -15,6 +15,7 @@
  */
 package org.springframework.samples.petclinic.system;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * <p/>
  * Also see how a view that resolves to "error" has been added ("error.html").
  */
+@Profile("!webflux")
 @Controller
 class CrashController {
 
