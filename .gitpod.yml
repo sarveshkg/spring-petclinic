@@ -1,0 +1,12 @@
+image:
+  file: docker-dev.dockerfile
+
+ports:
+- port: 8080
+  onOpen: open-preview
+
+tasks:
+- init: |
+    ./mvnw package
+  command: |
+    java -jar target/*.jar
