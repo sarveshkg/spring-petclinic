@@ -1,5 +1,5 @@
 image:
-  file: docker-dev.dockerfile
+  file: dev.dockerfile
 
 ports:
 - port: 8080
