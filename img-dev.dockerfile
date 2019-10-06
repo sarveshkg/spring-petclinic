@@ -8,7 +8,8 @@ RUN apt-get update \
  && apt-get install -yq \
       curl \
       gnupg \
-      python-openssl \
+      apt-transport-https \
+      ca-certificates \
       git \
       openjdk-11-jdk-headless \
       maven
@@ -16,11 +17,16 @@ ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
 
 # install 'gcloud' and 'kubectl' cli commands
 RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list \
- && apt-get install -yq apt-transport-https ca-certificates \
  && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add - \
  && apt-get update \
  && apt-get install -yq google-cloud-sdk kubectl
  # curl https://sdk.cloud.google.com | bash
+
+# install docker
+RUN curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - \
+ && add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" \
+ && apt-get update \
+ && apt-get install docker-ce docker-ce-cli containerd.io
 
 # (optional) add a Gitpod user
 RUN addgroup --gid 33333 gitpod \
