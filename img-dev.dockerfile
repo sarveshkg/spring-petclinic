@@ -10,6 +10,7 @@ RUN apt-get update \
       gnupg \
       apt-transport-https \
       ca-certificates \
+      software-properties-common \
       git \
       openjdk-11-jdk-headless \
       maven
