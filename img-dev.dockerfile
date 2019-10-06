@@ -26,3 +26,7 @@ RUN addgroup --gid 33333 gitpod \
 
 # switch to user Gitpod.
 USER gitpod
+
+# the prompt in the Bash Terminal should show 'applitools' and not the current user name
+RUN { echo && echo "PS1='\[\e]0;gitpod \w\a\]\[\033[01;32m\]gitpod\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\] \\\$ '" ; } >> /home/gitpod/.bashrc
+

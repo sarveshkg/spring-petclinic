@@ -22,3 +22,4 @@ tasks:
       echo "Set GOOGLE_APPLICATION_CREDENTIALS value based on contents from GCP_ADC_FILE"
       export GOOGLE_APPLICATION_CREDENTIALS="$GCLOUD_ADC_PATH"
     fi
+    gcloud container clusters get-credentials moritz-pet-clinic --zone us-west1-b --project gke-playground-191013
