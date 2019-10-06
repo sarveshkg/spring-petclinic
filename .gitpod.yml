@@ -31,3 +31,7 @@ tasks:
     gcloud container clusters get-credentials moritz-pet-clinic --zone us-west1-b --project gke-playground-191013
     kubectl apply -f docker-engine.k8s.yaml
     kubectl port-forward deployment/docker-engine 2375:2375 &
+
+github:
+  prebuilds:
+    branches: true
