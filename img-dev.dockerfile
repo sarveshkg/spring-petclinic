@@ -7,6 +7,7 @@ USER root
 RUN apt-get update \
  && apt-get install -yq \
       curl \
+      gnupg \
       git \
       openjdk-11-jdk-headless \
       maven
