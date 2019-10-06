@@ -6,6 +6,7 @@ vscode:
     - Pivotal.vscode-spring-boot@1.11.0:gKokcVIlbvXM5pr9HCsGiA==
     - vscjava.vscode-spring-initializr@0.4.6:WOgtgIwX3Ngy4pM9ArXjCQ==
     - vscjava.vscode-spring-boot-dashboard@0.1.6:/G6fobfzYSrYZdNU7UB78g==
+    - googlecloudtools.cloudcode@0.0.12:aImviY7NjOmGuXuyoD+uxQ==
 
 ports:
 - port: 8080
@@ -13,7 +14,8 @@ ports:
 - port: 2375
   onOpen: ignore
 
-tasks:
+tasks
+:
 
 - init: |
     ./mvnw package
@@ -29,5 +31,3 @@ tasks:
     gcloud container clusters get-credentials moritz-pet-clinic --zone us-west1-b --project gke-playground-191013
     kubectl apply -f docker-engine.k8s.yaml
     kubectl port-forward deployment/docker-engine 2375:2375 &
-
-
