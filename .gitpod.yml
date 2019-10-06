@@ -23,3 +23,4 @@ tasks:
       export GOOGLE_APPLICATION_CREDENTIALS="$GCLOUD_ADC_PATH"
     fi
     gcloud container clusters get-credentials moritz-pet-clinic --zone us-west1-b --project gke-playground-191013
+    # gcloud auth activate-service-account playground --key-file=/workspace/spring-petclinic/x
