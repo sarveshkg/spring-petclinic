@@ -18,8 +18,7 @@ RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.
  && apt-get install -yq apt-transport-https ca-certificates \
  && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add - \
  && apt-get update \
- && apt-get install -yq google-cloud-sdk kubectl \
- && gcloud init
+ && apt-get install -yq google-cloud-sdk kubectl
 
 # (optional) add a Gitpod user
 RUN addgroup --gid 33333 gitpod \
