@@ -14,8 +14,7 @@ ports:
 - port: 2375
   onOpen: ignore
 
-tasks
-:
+tasks:
 
 - init: |
     ./mvnw package
