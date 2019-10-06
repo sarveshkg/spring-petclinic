@@ -4,6 +4,8 @@ image:
 ports:
 - port: 8080
   onOpen: open-preview
+- port: 2375
+  onOpen: ignore
 
 tasks:
 
@@ -14,7 +16,11 @@ tasks:
 
 - name: gcloud
   command: |
-    echo $GCP_ACCOUNT > ~/account.json
-    gcloud auth activate-service-account playground --key-file=~/account.json
+    echo $GCP_ACCOUNT > /home/gitpod/account.json
+    gcloud auth activate-service-account --key-file=/home/gitpod/account.json
+    rm /home/gitpod/account.json
     gcloud config set project gke-playground-191013
     gcloud container clusters get-credentials moritz-pet-clinic --zone us-west1-b --project gke-playground-191013
+    kubectl apply -f docker-engine.k8s.yaml
+    kubectl port-forwrd deployment/docker-engine 2375:2375 &
+
