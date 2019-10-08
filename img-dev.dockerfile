@@ -8,6 +8,7 @@ RUN apt-get update \
  && apt-get install -yq \
       curl \
       gnupg \
+      procps \
       apt-transport-https \
       ca-certificates \
       software-properties-common \
