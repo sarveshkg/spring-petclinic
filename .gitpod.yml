@@ -7,7 +7,6 @@ vscode:
     - vscjava.vscode-spring-initializr@0.4.6:WOgtgIwX3Ngy4pM9ArXjCQ==
     - vscjava.vscode-spring-boot-dashboard@0.1.6:/G6fobfzYSrYZdNU7UB78g==
     - ms-kubernetes-tools.vscode-kubernetes-tools@1.0.4:Xhg4EprIGTB3Rd2PNCL/xA==
-    - vscjava.vscode-java-test@0.20.0:rWYsE8yhzy1lJy4rpU9LQg==
 
 ports:
 - port: 8080
