@@ -18,9 +18,11 @@ ports:
 tasks:
 
 - init: |
+    mysql < src/main/resources/db/mysql/schema.sql
+    mysql -D petclinic < src/main/resources/db/mysql/data.sql
     ./mvnw package -DskipTests
   command: |
-    java -jar target/*.jar
+    ./mvnw spring-boot:run
 
 - name: gcloud
   command: |
