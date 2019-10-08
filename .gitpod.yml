@@ -7,6 +7,7 @@ vscode:
     - vscjava.vscode-spring-initializr@0.4.6:WOgtgIwX3Ngy4pM9ArXjCQ==
     - vscjava.vscode-spring-boot-dashboard@0.1.6:/G6fobfzYSrYZdNU7UB78g==
     - ms-kubernetes-tools.vscode-kubernetes-tools@1.0.4:Xhg4EprIGTB3Rd2PNCL/xA==
+    - bajdzis.vscode-database@2.2.0:KaEYYfe8G3NOWlsM6VNLHA==
 
 ports:
 - port: 8080
@@ -17,7 +18,7 @@ ports:
 tasks:
 
 - init: |
-    ./mvnw package
+    ./mvnw package -DskipTests
   command: |
     java -jar target/*.jar
 
