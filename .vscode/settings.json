@@ -1,4 +1,13 @@
 {
    "java.configuration.updateBuildConfiguration": "interactive",
-   "docker.host": "tcp://localhost:2375"
+   "database.connections": [
+        {
+            "type": "mysql",
+            "name": "MySQL",
+            "host": "localhost:3306",
+            "username": "root",
+            "database": "mysql",
+            "password": ""
+        }
+    ]
 }
