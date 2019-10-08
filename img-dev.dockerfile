@@ -16,11 +16,12 @@ RUN apt-get update \
       maven
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
 
-# install 'gcloud' and 'kubectl' cli commands
+# install 'gcloud', 'kubectl' and `helm` cli commands
 RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list \
  && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add - \
  && apt-get update \
- && apt-get install -yq google-cloud-sdk kubectl
+ && apt-get install -yq google-cloud-sdk kubectl \
+ && curl -L https://git.io/get_helm.sh | bash
  # curl https://sdk.cloud.google.com | bash
 
 # install docker
@@ -40,3 +41,5 @@ USER gitpod
 # the prompt in the Bash Terminal should show 'applitools' and not the current user name
 RUN { echo && echo "PS1='\[\e]0;gitpod \w\a\]\[\033[01;32m\]gitpod\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\] \\\$ '" ; } >> /home/gitpod/.bashrc
 
+# configure local maven repo to be in /workspace/m2-repository/
+RUN printf '<settings>\n  <localRepository>/workspace/m2-repository/</localRepository>\n</settings>\n' > /home/gitpod/.m2/settings.xml
