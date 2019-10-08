@@ -1,13 +1,4 @@
 {
    "java.configuration.updateBuildConfiguration": "interactive",
-   "sqltools.connections": [
-      {
-         "dialect": "MySQL",
-         "port": 3306,
-         "server": "localhost",
-         "name": "MySQL",
-         "database": "mysql",
-         "username": "root"
-      }
-   ]
+   "docker.host": "tcp://localhost:2375"
 }
