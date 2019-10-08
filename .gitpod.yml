@@ -14,6 +14,8 @@ ports:
   onOpen: open-preview
 - port: 2375
   onOpen: ignore
+- port: 3306
+  onOpen: ignore
 
 tasks:
 
