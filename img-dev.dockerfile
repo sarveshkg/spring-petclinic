@@ -42,4 +42,5 @@ USER gitpod
 RUN { echo && echo "PS1='\[\e]0;gitpod \w\a\]\[\033[01;32m\]gitpod\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\] \\\$ '" ; } >> /home/gitpod/.bashrc
 
 # configure local maven repo to be in /workspace/m2-repository/
-RUN printf '<settings>\n  <localRepository>/workspace/m2-repository/</localRepository>\n</settings>\n' > /home/gitpod/.m2/settings.xml
+RUN mkdir /home/gitpod/.m2 \
+ && printf '<settings>\n  <localRepository>/workspace/m2-repository/</localRepository>\n</settings>\n' > /home/gitpod/.m2/settings.xml
