@@ -1,5 +1,26 @@
 image:
-  file: img-dev.dockerfile
+  file: .gitpod.dockerfile
+
+tasks:
+- init: |
+    ./mvnw package dockerfile:build -DskipTests=true -Ddockerfile.skip=true
+  command: |
+    mysql < src/main/resources/db/mysql/schema.sql
+    mysql -D petclinic < src/main/resources/db/mysql/data.sql
+    java -jar target/*.jar
+
+
+
+- name: gcloud
+  command: |
+    echo $GCP_ACCOUNT > /home/gitpod/account.json
+    gcloud auth activate-service-account --key-file=/home/gitpod/account.json
+    rm /home/gitpod/account.json
+    gcloud config set project gke-playground-191013
+    gcloud container clusters get-credentials moritz-pet-clinic --zone us-west1-b --project gke-playground-191013
+    kubectl apply -f docker-engine.k8s.yaml
+    kubectl port-forward deployment/docker-engine 2375:2375 &
+    docker login --username meysholdt --password $DOCKER_HUB_TOKEN
 
 vscode:
   extensions:
@@ -17,25 +38,6 @@ ports:
 - port: 3306
   onOpen: ignore
 
-tasks:
-
-- name: gcloud
-  command: |
-    echo $GCP_ACCOUNT > /home/gitpod/account.json
-    gcloud auth activate-service-account --key-file=/home/gitpod/account.json
-    rm /home/gitpod/account.json
-    gcloud config set project gke-playground-191013
-    gcloud container clusters get-credentials moritz-pet-clinic --zone us-west1-b --project gke-playground-191013
-    kubectl apply -f docker-engine.k8s.yaml
-    kubectl port-forward deployment/docker-engine 2375:2375 &
-    docker login --username meysholdt --password $DOCKER_HUB_TOKEN
-
-- init: |
-    ./mvnw package dockerfile:build -DskipTests=true -Ddockerfile.skip=true
-  command: |
-    mysql < src/main/resources/db/mysql/schema.sql
-    mysql -D petclinic < src/main/resources/db/mysql/data.sql
-    ./mvnw spring-boot:run
 
 github:
   prebuilds:
