@@ -212,6 +212,14 @@
           </dependency>
         </dependencies>
       </plugin>
+      <plugin>
+            <groupId>com.spotify</groupId>
+            <artifactId>dockerfile-maven-plugin</artifactId>
+            <version>1.4.9</version>
+            <configuration>
+                <repository>foo/${project.artifactId}</repository>
+            </configuration>
+        </plugin>
     </plugins>
   </build>
 
