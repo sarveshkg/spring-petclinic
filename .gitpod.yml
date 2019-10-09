@@ -31,10 +31,10 @@ tasks:
     docker login --username meysholdt --password $DOCKER_HUB_TOKEN
 
 - init: |
+    ./mvnw package dockerfile:build -Ddockerfile.skip=true -DskipTests=true
+  command: |
     mysql < src/main/resources/db/mysql/schema.sql
     mysql -D petclinic < src/main/resources/db/mysql/data.sql
-    ./mvnw compile -DskipTests
-  command: |
     ./mvnw spring-boot:run
 
 github:
