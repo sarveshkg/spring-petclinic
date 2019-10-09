@@ -6,7 +6,7 @@
             "name": "MySQL",
             "host": "localhost:3306",
             "username": "root",
-            "database": "mysql",
+            "database": "petclinic",
             "password": ""
         }
     ]

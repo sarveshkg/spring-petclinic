@@ -19,13 +19,6 @@ ports:
 
 tasks:
 
-- init: |
-    mysql < src/main/resources/db/mysql/schema.sql
-    mysql -D petclinic < src/main/resources/db/mysql/data.sql
-    ./mvnw package -DskipTests
-  command: |
-    ./mvnw spring-boot:run
-
 - name: gcloud
   command: |
     echo $GCP_ACCOUNT > /home/gitpod/account.json
@@ -35,6 +28,13 @@ tasks:
     gcloud container clusters get-credentials moritz-pet-clinic --zone us-west1-b --project gke-playground-191013
     kubectl apply -f docker-engine.k8s.yaml
     kubectl port-forward deployment/docker-engine 2375:2375 &
+
+- init: |
+    mysql < src/main/resources/db/mysql/schema.sql
+    mysql -D petclinic < src/main/resources/db/mysql/data.sql
+    ./mvnw compile -DskipTests
+  command: |
+    ./mvnw spring-boot:run
 
 github:
   prebuilds:
