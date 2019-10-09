@@ -16,4 +16,7 @@ RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - \
  && apt-get install -yq docker-ce docker-ce-cli containerd.io
 ENV DOCKER_HOST=tcp://localhost:2375
 
+RUN wget https://github.com/wagoodman/dive/releases/download/v0.8.1/dive_0.8.1_linux_amd64.deb \
+ && apt install ./dive_0.8.1_linux_amd64.deb
+
 USER gitpod
