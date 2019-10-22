@@ -22,3 +22,6 @@ RUN wget https://github.com/wagoodman/dive/releases/download/v0.8.1/dive_0.8.1_l
 ENV MAVEN_USER_HOME=/workspace/.m2
 
 USER gitpod
+
+
+# version 2
