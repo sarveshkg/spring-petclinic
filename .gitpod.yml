@@ -16,8 +16,8 @@ tasks:
     echo $GCP_ACCOUNT > /home/gitpod/account.json
     gcloud auth activate-service-account --key-file=/home/gitpod/account.json
     rm /home/gitpod/account.json
-    gcloud config set project gke-playground-191013
-    gcloud container clusters get-credentials moritz-pet-clinic --zone us-west1-b --project gke-playground-191013
+    gcloud config set project me-gitpod-playground1
+    gcloud container clusters get-credentials me-test --zone europe-west1-d --project me-gitpod-playground1
     kubectl apply -f docker-engine.k8s.yaml
     kubectl port-forward deployment/docker-engine 2375:2375 &
     docker login --username meysholdt --password $DOCKER_HUB_TOKEN
