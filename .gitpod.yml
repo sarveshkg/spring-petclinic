@@ -24,11 +24,11 @@ tasks:
 
 vscode:
   extensions:
-    - Pivotal.vscode-spring-boot@1.11.0:gKokcVIlbvXM5pr9HCsGiA==
-    - vscjava.vscode-spring-initializr@0.4.6:WOgtgIwX3Ngy4pM9ArXjCQ==
-    - vscjava.vscode-spring-boot-dashboard@0.1.6:/G6fobfzYSrYZdNU7UB78g==
-    - ms-kubernetes-tools.vscode-kubernetes-tools@1.0.4:Xhg4EprIGTB3Rd2PNCL/xA==
-    - bajdzis.vscode-database@2.2.0:KaEYYfe8G3NOWlsM6VNLHA==
+    - Pivotal.vscode-spring-boot@1.26.0
+    - vscjava.vscode-spring-initializr@0.7.0
+    - vscjava.vscode-spring-boot-dashboard@0.2.0
+    - ms-kubernetes-tools.vscode-kubernetes-tools@1.3.3
+    - bajdzis.vscode-database@2.2.3
 
 ports:
 - port: 8080
